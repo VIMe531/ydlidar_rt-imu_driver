@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="hand_lidar_robot">
+
+  <!-- Base Link -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://lidar_imu_driver/urdf/hand_lidar.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <!-- Imu Joint (Fixed) -->
+  <joint name="base_to_imu" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu_frame"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Imu Link -->
+  <link name="imu_frame"/>
+
+  <!-- Lidar Joint (Fixed) -->
+  <joint name="imu_to_lidar" type="fixed">
+    <parent link="imu_frame"/>
+    <child link="laser_frame"/>
+    <origin xyz="0 0 0.0324" rpy="0 0 0.1744"/>
+  </joint>
+
+  <!-- Lidar Link -->
+  <link name="laser_frame"/>
+
+</robot>
+

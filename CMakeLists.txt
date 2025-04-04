@@ -25,3 +25,6 @@ if(BUILD_TESTING)
 endif()
 
 ament_package()
+
+install(DIRECTORY launch config urdf
+    DESTINATION share/${PROJECT_NAME})
